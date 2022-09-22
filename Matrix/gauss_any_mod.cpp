@@ -17,7 +17,7 @@ int gauss (vector < vector<int> > &a, vector<int> & ans) {
 
         for (int i=0; i<n; ++i)
             if (i != row) {
-                int c = a[i][col] *mod_inv( a[row][col], mod);
+                int c = a[i][col] *mod_inv( a[row][col], mod)%mod;
                 for (int j=col; j<=m; ++j)
                 {
                     a[i][j] =(a[i][j]- a[row][j] * c%mod + mod)%mod;
