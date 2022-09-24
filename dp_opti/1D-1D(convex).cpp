@@ -1,3 +1,19 @@
+// Monge condition : ∀a<b≤c<d,
+
+//     Convex Monge condition : f(a,c)+f(b,d)≤f(a,d)+f(b,c)
+
+// Concave Monge condition : f(a,c)+f(b,d)≥f(a,d)+f(b,c)
+
+// Totally monotone : ∀a<b≤c<d,
+
+//     Convex totally monotone : f(a,c)≥f(b,c)⟹f(a,d)≥f(b,d)
+
+// Concave totally monotone : f(a,c)≤f(b,c)⟹f(a,d)≤f(b,d)
+
+// Usually f(i,j) is something like dpi+cost(i+1,j) or cost(i,j).
+
+
+
 struct Node { 
   ll p, l, r; // p is the best transition point for dp[l], dp[l+1], ..., dp[r]
 }; 
