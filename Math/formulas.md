@@ -24,5 +24,5 @@ $$ \begin{array}{rll}
                         F_{2k+1} &= F_{k+1}^2 + F_{k}^2.
 \end{array}$$
 
-$$x^{n}\equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m$$
+$$x^{n}\equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m$$  n>=log2(m)
 
