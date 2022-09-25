@@ -1,3 +1,6 @@
+// a[1....n][1.....m] -> cost function
+//n<=m with n people having to assign m jobs
+
 vector<int> u (n+1), v (m+1), p (m+1), way (m+1);
 for (int i=1; i<=n; ++i) {
 	p[0] = i;
