@@ -45,3 +45,9 @@ with k components - k*(n^(n-k-1))
 
 
 Kirchoff thm- number of spanning trees of any given graph = Cofactor_of_any_element(Degree_matrix-Adjacecy_matrix)
+
+
+		Total number of partitions of $n$ distinct elements. $B(n) =$
+		$1, 1, 2, 5, 15, 52, 203, 877, 4140, 21147, \dots$. For $p$ prime,
+		\[ B(p^m+n)\equiv mB(n)+B(n+1) \pmod{p} \]
+
