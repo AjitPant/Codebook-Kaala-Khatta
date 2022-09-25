@@ -26,3 +26,5 @@ $$ \begin{array}{rll}
 
 $$x^{n}\equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m  , n>=log2(m)$$
 
+
+(p-1)! mod p = -1
