@@ -32,4 +32,7 @@ $$x^{n}\equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m  , n>=log2(m)$$
 
 NTT root Formula:
 kth root of mod = (primitive_root)^((mod-1)/ gcd(mod-1,1<<n) )
+
 Cayley formula- Number of labelled nodes with k components = k*(n^(n-k-1))
+
+Kirchoff thm- number of spanning trees of any given graph = Cofactor_of_any_element(Degree_matrix-Adjacecy_matrix)
