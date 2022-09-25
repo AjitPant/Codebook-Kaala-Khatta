@@ -33,9 +33,11 @@ $$x^{n}\equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m  , n>=log2(m)$$
 NTT root Formula:
 kth root of mod = (primitive_root)^((mod-1)/ gcd(mod-1,1<<n) )
 
-# on n vertices: nn−2
-# on k existing trees of size ni: n1n2 · · · nknk−2
-# with degrees di: (n − 2)!/((d1 − 1)! · · · (dn − 1)!)
+<!-- 	\subsection{Labeled unrooted trees} -->
+Labeled unrooted trees:
+		\# on $n$ vertices: $n^{n-2}$ \\
+		\# on $k$ existing trees of size $n_i$: $n_1n_2\cdots n_k n^{k-2}$ \\
+		\# with degrees $d_i$: $(n-2)! / ((d_1-1)! \cdots (d_n-1)!)$
 
 
 Kirchoff thm- number of spanning trees of any given graph = Cofactor_of_any_element(Degree_matrix-Adjacecy_matrix)
