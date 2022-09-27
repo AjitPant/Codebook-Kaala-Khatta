@@ -41,6 +41,8 @@ struct Centroid {
 					if(!done[p]) {
 						ll x = construct(G, cd, done, p);
 						cd.add_edge(x, root);
+						// root is parent of x is centroid tree
+						// cd.parent[x] = root;	
 					}
 				}
 				return root;
