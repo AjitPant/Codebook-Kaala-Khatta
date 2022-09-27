@@ -1,5 +1,6 @@
 #pragma GCC optimize ("O3,unroll-loops,no-stack-protector")
 #pragma GCC target ("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
+#pragma GCC target("popcnt")
 
 #include <bits/extc++.h>
 using namespace __gnu_pbds;
