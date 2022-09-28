@@ -14,18 +14,6 @@ const int root_1 = mod_inv(root, mod);
 const int root_pw = 1<<23;
 
 void fft(vector<int> & a, bool invert) {
-    int n = a.size();
-
-    for (int i = 1, j = 0; i < n; i++) {
-        int bit = n >> 1;
-        for (; j & bit; bit >>= 1)
-            j ^= bit;
-        j ^= bit;
-
-        if (i < j)
-            swap(a[i], a[j]);
-    }
-
     for (int len = 2; len <= n; len <<= 1) {
         int wlen = invert ? root_1 : root;
         for (int i = len; i < root_pw; i <<= 1)
