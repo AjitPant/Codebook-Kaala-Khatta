@@ -1,6 +1,3 @@
-long long mult(long long a, long long b, long long mod) {
-    return (__int128)a * b % mod;
-}
 long long f(long long x, long long c, long long mod) {
     return (mult(x, x, mod) + c) % mod;
 }
