@@ -1,6 +1,4 @@
-
 namespace geometry_2d {
-
 typedef double T;
 typedef complex<T> pt;
 int sgn(T x) {
@@ -249,5 +247,4 @@ int tangents(pt o1, double r1, pt o2, double r2, bool inner, vector<pair<pt, pt>
     }
     return 1 + (h2 > 0);
 }
-
 }
