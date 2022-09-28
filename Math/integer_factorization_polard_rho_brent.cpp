@@ -1,12 +1,9 @@
 long long mult(long long a, long long b, long long mod) {
     return (__int128)a * b % mod;
 }
-
 long long f(long long x, long long c, long long mod) {
     return (mult(x, x, mod) + c) % mod;
 }
-
-
 long long brent(long long n, long long x0=2, long long c=1) {
     long long x = x0;
     long long g = 1;
