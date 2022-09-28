@@ -279,5 +279,4 @@ int windingNumber3D(vector<vector<p3>> fs) {
         sum += remainder(areaOnSphere(1, f), 4 * M_PI);
     return round(sum / (4 * M_PI));
 }
-
 }
