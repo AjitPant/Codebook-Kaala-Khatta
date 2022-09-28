@@ -1,5 +1,4 @@
-/**
- * If undo is not needed, skip st, time() and rollback().
+/**If undo is not needed, skip st, time() and rollback().
  * Usage: int t = uf.time(); ...; uf.rollback(t);
  * Time: $O(\log(N))$
  */
