@@ -1,7 +1,6 @@
 /**If undo is not needed, skip st, time() and rollback().
  * Usage: int t = uf.time(); ...; uf.rollback(t);
- * Time: $O(\log(N))$
- */
+ * Time: $O(\log(N))$*/
 struct RollbackUF {
 	vi e; vector<pii> st;
 	RollbackUF(int n) : e(n, -1) {}
