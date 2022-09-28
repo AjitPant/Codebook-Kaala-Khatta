@@ -29,37 +29,29 @@ inline void reroot(int r) { // r = new base row
       pred[i][j]=L;
       } 
       else if(j<bl&&pred[i+1][j+1]==LU) {
-      i++;
-      j++;
+      i++;j++;
       pred[i][j]=L;
       } else {
       j++;
     }
   }
 }
-
-
 int cyclic_lcs() {
 // a, b, al, bl should be properly filled
 // note: a WILL be altered in process
 // -- concatenated after itself
   char tmp[MAXL];
   if(al>bl) {
-    swap(al,bl);
-    strcpy(tmp,a);
-    strcpy(a,b);
-    strcpy(b,tmp);
+    swap(al,bl);strcpy(tmp,a);
+    strcpy(a,b);strcpy(b,tmp);
   }
-  strcpy(tmp,a);
-  strcat(a,tmp);
+  strcpy(tmp,a);strcat(a,tmp);
   // basic lcs
   for(int i=0;i<=2*al;i++) {
-    dp[i][0]=0;
-    pred[i][0]=U;
+    dp[i][0]=0;pred[i][0]=U;
   }
   for(int j=0;j<=bl;j++) {
-    dp[0][j]=0;
-    pred[0][j]=L;
+    dp[0][j]=0;pred[0][j]=L;
   }
   for(int i=1;i<=2*al;i++) {
     for(int j=1;j<=bl;j++) {
@@ -77,6 +69,6 @@ int cyclic_lcs() {
     reroot(i+1);
   }
   // recover a
-    a[al]='\0';
-    return clcs;
+  a[al]='\0';
+  return clcs;
 }
