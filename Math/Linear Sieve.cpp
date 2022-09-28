@@ -1,7 +1,6 @@
 const int N = 10000000;
 vector<int> lp(N+1);
 vector<int> pr;
-
 for (int i=2; i <= N; ++i) {
     if (lp[i] == 0) {
         lp[i] = i;
