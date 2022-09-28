@@ -1,13 +1,4 @@
-/**
- * Author: Simon Lindholm
- * Date: 2017-04-20
- * License: CC0
- * Source: own work
- * Description: Container where you can add lines of the form kx+m, and query maximum values at points x.
- *  Useful for dynamic programming (``convex hull trick'').
- * Time: O(\log N)
- * Status: stress-tested
- */
+// * Description: Container where you can add lines of the form kx+m, and query maximum values at points x.
 #pragma once
 
 struct Line {
