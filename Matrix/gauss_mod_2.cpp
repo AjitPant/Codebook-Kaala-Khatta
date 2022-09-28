@@ -1,4 +1,3 @@
-
 const int N = 500;
 int gauss (vector < bitset<N> > a, int n, int m, bitset<N> & ans) {
     vector<int> where (m, -1);
@@ -17,7 +16,6 @@ int gauss (vector < bitset<N> > a, int n, int m, bitset<N> & ans) {
                 a[i] ^= a[row];
         ++row;
     }
-        // The rest of implementation is the same as above
     ans.reset();
     for (int i=0; i<m; ++i)
         if (where[i] != -1)
@@ -27,7 +25,6 @@ int gauss (vector < bitset<N> > a, int n, int m, bitset<N> & ans) {
         if (sum%2 != a[i][m])
             return 0;
     }
-
     for (int i=0; i<m; ++i)
         if (where[i] == -1)
             return 2;
