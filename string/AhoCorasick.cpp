@@ -5,9 +5,9 @@ struct AhoCorasick {
 		int next[ALPHABET], link, parent;
 		char ch; bool ends;
 		Node(int par = -1, char c = LOW - 1): parent(par), ch(c), link(-1), ends(false) {
-			for(int i=0; i<ALPHABET; i++) 
+			for(int i=0; i<ALPHABET; i++)
 				next[i] = -1;
-		} 
+		}
 	};
 	vector<Node> nodes;
 	int root;
@@ -28,20 +28,20 @@ struct AhoCorasick {
 			if(nodes[fr].parent <= 0) {
 				nodes[fr].link = 0;
 				for(int i=0; i<ALPHABET; i++)
-					if(nodes[fr].next[i] == -1) 
-						if(nodes[fr].parent == -1) 
+					if(nodes[fr].next[i] == -1)
+						if(nodes[fr].parent == -1)
 							nodes[fr].next[i] = 0;
-						else 
+						else
 							nodes[fr].next[i] = nodes[nodes[fr].link].next[i];
-					else 
+					else
 						q.push(nodes[fr].next[i]);
 			}
 			else {
 				nodes[fr].link = nodes[nodes[nodes[fr].parent].link].next[nodes[fr].ch - LOW];
 				for(int i=0; i<ALPHABET; i++)
-					if(nodes[fr].next[i] == -1) 
+					if(nodes[fr].next[i] == -1)
 						nodes[fr].next[i] = nodes[nodes[fr].link].next[i];
-					else 
+					else
 						q.push(nodes[fr].next[i]);
 			}
 		}

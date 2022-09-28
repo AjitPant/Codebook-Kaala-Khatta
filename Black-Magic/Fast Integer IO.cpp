@@ -1,4 +1,4 @@
-static char buf[1 << 19]; // size : any number geq than 1024
+static char buf[1 << 19];  // size : any number geq than 1024
 static int idx = 0;
 static int bytes = 0;
 static inline int _read() {
