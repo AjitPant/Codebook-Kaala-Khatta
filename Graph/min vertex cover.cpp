@@ -5,13 +5,9 @@
  * or $-1$ if it's not matched.
  * Time: O(VE)
  * Usage: vi btoa(m, -1); dfsMatching(g, btoa);
- */
-/**
  * Description: Finds a minimum vertex cover in a bipartite graph.
  *  The size is the same as the size of a maximum matching, and
- *  the complement is a maximum independent set.
- * Status: stress-tested
- */
+ *  the complement is a maximum independent set*/
 bool find(int j, vector<vi>& g, vi& btoa, vi& vis) {
 	if (btoa[j] == -1) return 1;
 	vis[j] = 1; int di = btoa[j];
@@ -22,7 +18,6 @@ bool find(int j, vector<vi>& g, vi& btoa, vi& vis) {
 		}
 	return 0;
 }
-
 int dfsMatching(vector<vi>& g, vi& btoa) {
 	vi vis;
 	rep(i,0,sz(g)) {
@@ -35,7 +30,6 @@ int dfsMatching(vector<vi>& g, vi& btoa) {
 	}
 	return sz(btoa) - (int)count(all(btoa), -1);
 }
-
 vi cover(vector<vi>& g, int n, int m) {
 	vi match(m, -1);
 	int res = dfsMatching(g, match);
