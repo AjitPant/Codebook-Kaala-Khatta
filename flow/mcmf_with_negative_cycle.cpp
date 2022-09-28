@@ -1,6 +1,6 @@
 // Push-Relabel implementation of the cost-scaling algorithm
 // Runs in O( <max_flow> * log(V * max_edge_cost)) = O( V^3 * log(V * C))
-// Really fast in practice, 3e4 edges are fine.
+// 3e4 edges are fine.
 // Operates on integers, costs are multiplied by N!!
 
 #include<bits/stdc++.h>
