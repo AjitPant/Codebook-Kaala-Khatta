@@ -1,13 +1,3 @@
-int powmod (int a, int b, int p) {
-    int res = 1;
-    while (b)
-        if (b & 1)
-            res = int (res * 1ll * a % p),  --b;
-        else
-            a = int (a * 1ll * a % p),  b >>= 1;
-    return res;
-}
-
 int generator (int p) {
     vector<int> fact;
     int phi = p-1,  n = phi;
