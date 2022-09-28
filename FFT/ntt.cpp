@@ -3,6 +3,12 @@ const int root = 5;
 const int root_1 = 4404020;
 const int root_pw = 1 << 20;
 
+const int mod = 998244353;
+const int root = 3;
+const int root_1 = 332748118;
+const int root_pw = 1<<23;
+
+
 void fft(vector<int> & a, bool invert) {
     int n = a.size();
 
