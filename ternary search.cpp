@@ -5,5 +5,4 @@ while (hi - lo > 1){
          hi = mid;
     else 
          lo = mid; 
-}
-//lo + 1 is the answer
+}//lo + 1 is the answer
