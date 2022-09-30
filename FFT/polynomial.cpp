@@ -14,8 +14,6 @@ void mul(vector<T> &a, const vector<T> &b) {
     n++;
   }
   a.resize(n);
-  static point *A = new point[maxn], *B = new point[maxn];
-  static point *C = new point[maxn], *D = new point[maxn];
   for (size_t i = 0; i < n; i++) {
     A[i] = point(a[i] & mask, a[i] >> shift);
     if (i < b.size()) {
@@ -50,18 +48,6 @@ void mul(vector<T> &a, const vector<T> &b) {
 }  // namespace fft
 template <typename T>
 struct poly {
-  vector<T> a;
-
-  void normalize() {  // get rid of leading zeroes
-    while (!a.empty() && a.back() == T(0)) {
-      a.pop_back();
-    }
-  }
-
-  poly() {}
-  poly(T a0) : a{a0} { normalize(); }
-  poly(vector<T> t) : a(t) { normalize(); }
-
   poly inv(size_t n) const {  // get inverse series mod x^n
     assert(!is_zero());
     poly ans = a[0].inv();
@@ -89,7 +75,6 @@ struct poly {
     std::reverse(begin(res), end(res));
     return {res, A};
   }
-
   pair<poly, poly> divmod(
       const poly &b) const {  // returns quotiend and remainder of a mod b
     if (deg() < b.deg()) {
@@ -103,15 +88,6 @@ struct poly {
                  .mod_xk(d + 1)
                  .reverse(d + 1, 1);
     return {D, *this - D * b};
-  }
-
-  T eval(T x) const {  // evaluates in single point x
-    T res(0);
-    for (int i = int(a.size()) - 1; i >= 0; i--) {
-      res *= x;
-      res += a[i];
-    }
-    return res;
   }
   poly log(size_t n) {  // calculate log p(x) mod x^n
     assert(a[0] == T(1));
@@ -130,12 +106,6 @@ struct poly {
       a *= 2;
     }
     return ans.mod_xk(n);
-  }
-
-  poly pow_slow(size_t k, size_t n) {  // if k is small
-    return k ? k % 2 ? (*this * pow_slow(k - 1, n)).mod_xk(n)
-                     : (*this * *this).mod_xk(n).pow_slow(k / 2, n)
-             : T(1);
   }
   poly pow(size_t k, size_t n) {  // calculate p^k(n) mod x^n
     if (is_zero()) {
@@ -225,32 +195,6 @@ struct poly {
     }
   }
 };
-
-template <typename T>
-T resultant(poly<T> a, poly<T> b) {  // computes resultant of a and b
-  if (b.is_zero()) {
-    return 0;
-  } else if (b.deg() == 0) {
-    return bpow(b.lead(), a.deg());
-  } else {
-    int pw = a.deg();
-    a %= b;
-    pw -= a.deg();
-    T mul = bpow(b.lead(), pw) * T((b.deg() & a.deg() & 1) ? -1 : 1);
-    T ans = resultant(b, a);
-    return ans * mul;
-  }
-}
-template <typename iter>
-poly<typename iter::value_type> kmul(
-    iter L, iter R) {  // computes (x-a1)(x-a2)...(x-an) without building tree
-  if (R - L == 1) {
-    return vector<typename iter::value_type>{-*L, 1};
-  } else {
-    iter M = L + (R - L) / 2;
-    return kmul(L, M) * kmul(M, R);
-  }
-}
 template <typename T, typename iter>
 poly<T> build(vector<poly<T>> &res, int v, iter L,
               iter R) {  // builds evaluation tree for (x-a1)(x-a2)...(x-an)
@@ -274,4 +218,3 @@ poly<T> inter(
 };  // namespace algebra
 using namespace algebra;
 typedef poly<base> polyn;
-using namespace algebra;
