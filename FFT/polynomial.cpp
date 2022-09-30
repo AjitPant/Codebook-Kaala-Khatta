@@ -113,23 +113,6 @@ struct poly {
     }
     return res;
   }
-  T &coef(size_t idx) {  // mutable reference at coefficient
-    return a[idx];
-  }
-  poly deriv() {  // calculate derivative
-    vector<T> res;
-    for (int i = 1; i <= deg(); i++) {
-      res.push_back(T(i) * a[i]);
-    }
-    return res;
-  }
-  poly integr() {  // calculate integral with C = 0
-    vector<T> res = {0};
-    for (int i = 0; i <= deg(); i++) {
-      res.push_back(a[i] / T(i + 1));
-    }
-    return res;
-  }
   poly log(size_t n) {  // calculate log p(x) mod x^n
     assert(a[0] == T(1));
     return (deriv().mod_xk(n) * inv(n)).integr().mod_xk(n);
@@ -289,9 +272,6 @@ poly<T> inter(
       .inter(tree, 1, begin(x), end(x), begin(y), end(y));
 }
 };  // namespace algebra
-
 using namespace algebra;
-
 typedef poly<base> polyn;
-
 using namespace algebra;
