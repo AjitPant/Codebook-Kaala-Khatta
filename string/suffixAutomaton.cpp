@@ -1,7 +1,3 @@
-// O(N) space complexity, O(NlogK) time to process a string of length N, K is
-// alphabet size Can change to O(NK) space complexity, O(N) time to process a
-// string of length N, replace map by array in node_SA
-
 template <int MAXLEN = 1000000>
 struct SuffixAutomaton {
   struct node_SA {
