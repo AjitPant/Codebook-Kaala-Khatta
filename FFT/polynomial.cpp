@@ -121,29 +121,19 @@ struct poly {
   }
   vector<T> chirpz_even(T z, int n) {  // P(1), P(z^2), P(z^4), ..., P(z^2(n-1))
     int m = deg();
-    if (is_zero()) {
-      return vector<T>(n, 0);
-    }
+    if (is_zero()) return vector<T>(n, 0);
     vector<T> vv(m + n);
-    T zi = z.inv();
-    T zz = zi * zi;
-    T cur = zi;
-    T total = 1;
+    T zi = z.inv();T zz = zi * zi;
+    T cur = zi;T total = 1;
     for (int i = 0; i <= max(n - 1, m); i++) {
-      if (i <= m) {
-        vv[m - i] = total;
-      }
-      if (i < n) {
-        vv[m + i] = total;
-      }
-      total *= cur;
-      cur *= zz;
+      if (i <= m) vv[m - i] = total;
+      
+      if (i < n) vv[m + i] = total;
+      total *= cur;cur *= zz;
     }
     poly w = (mulx_sq(z) * vv).substr(m, m + n).mulx_sq(z);
     vector<T> res(n);
-    for (int i = 0; i < n; i++) {
-      res[i] = w[i];
-    }
+    for (int i = 0; i < n; i++) res[i] = w[i];
     return res;
   }
   vector<T> chirpz(T z, int n) {  // P(1), P(z), P(z^2), ..., P(z^(n-1))
@@ -151,32 +141,24 @@ struct poly {
     auto odd = mulx(z).chirpz_even(z, n / 2);
     vector<T> ans(n);
     for (int i = 0; i < n / 2; i++) {
-      ans[2 * i] = even[i];
-      ans[2 * i + 1] = odd[i];
-    }
-    if (n % 2 == 1) {
-      ans[n - 1] = even.back();
-    }
+      ans[2 * i] = even[i];ans[2 * i + 1] = odd[i];}
+    if (n % 2 == 1) ans[n - 1] = even.back(); 
     return ans;
   }
   template <typename iter>
   vector<T> eval(vector<poly> &tree, int v, iter l,
                  iter r) {  // auxiliary evaluation function
-    if (r - l == 1) {
-      return {eval(*l)};
-    } else {
+    if (r - l == 1) return {eval(*l)};
+    else {
       auto m = l + (r - l) / 2;
       auto A = (*this % tree[2 * v]).eval(tree, 2 * v, l, m);
       auto B = (*this % tree[2 * v + 1]).eval(tree, 2 * v + 1, m, r);
       A.insert(end(A), begin(B), end(B));
-      return A;
-    }
+      return A; }
   }
   vector<T> eval(vector<T> x) {  // evaluate polynomial in (x1, ..., xn)
     int n = x.size();
-    if (is_zero()) {
-      return vector<T>(n, T(0));
-    }
+    if (is_zero())return vector<T>(n, T(0));
     vector<poly> tree(4 * n);
     build(tree, 1, begin(x), end(x));
     return eval(tree, 1, begin(x), end(x));
